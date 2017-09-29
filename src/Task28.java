@@ -19,9 +19,6 @@ public class Task28 {
   public int task28Solution() {
     int size = 1001;
     int[][] matrix = createMatrix(size);
-    for (int[] block : matrix) {
-      System.out.println(Arrays.toString(block));
-    }
     return diagonalSum(matrix);
   }
 
