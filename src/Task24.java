@@ -14,7 +14,7 @@ public class Task24 {
     return numberList.get(999999);
   }
 
-  public static void permutation(String str) {
+  private static void permutation(String str) {
     permutation("", str);
   }
 
