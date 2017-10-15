@@ -30,23 +30,4 @@ public class Task26 {
     }
     return number;
   }
-
-//  private List<String> createNumberStringList() {
-//    List<String> numberList = new ArrayList<>();
-//    for (int i = 3; i < 1001; i++) {
-//      BigDecimal bigValueI = BigDecimal.valueOf(i);
-//      BigDecimal number = (BigDecimal.ONE
-//          .divide(bigValueI, new MathContext(100, RoundingMode.HALF_UP)));
-//      String stringNumber = "" + number;
-//      numberList.add(stringNumber.substring(2, stringNumber.length()));
-//    }
-//    return numberList;
-//  }
-//
-//  private List<String> sortList(List<String> numberList) {
-//    List<String> stringNumberList = new ArrayList<>();
-//
-//
-//    return stringNumberList;
-//  }
 }
