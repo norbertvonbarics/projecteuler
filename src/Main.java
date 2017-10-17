@@ -4,7 +4,7 @@ public class Main {
 
   public static void main(String[] args) throws ParseException {
 
-    Task41 task41 = new Task41();
-    System.out.println(task41.task41Solution());
+    Task42 task42 = new Task42();
+    System.out.println(task42.task42Solution());
   }
 }
