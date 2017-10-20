@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,19 +18,42 @@ import java.util.List;
  * d8d9d10=289 is divisible by 17
  * Find the sum of all 0 to 9 pandigital numbers with this property.
  */
-public class Task43 {
+class Task43 {
 
-  List<Integer> numberList = new ArrayList<>();
+  private List<Long> numberList = new ArrayList<>();
+  private List<Integer> primeList = new ArrayList<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17));
 
-  public boolean task43Solution() {
+  long task43Solution() {
     permutation("0123456789");
-    return false;
+    long sum = 0;
+    for (long num : numberList) {
+      if(isDividableByPrimes(num)) {
+        sum += num;
+      }
+    }
+    return sum;
   }
 
+  private boolean isDividableByPrimes(long number) {
+    int counter = 1;
+    char[] digitArray = Long.toString(number).toCharArray();
+    for (int i = 1; i < 8; i++) {
+      StringBuilder tempNum = new StringBuilder();
+      for (int j = 0; j < 3; j++) {
+        tempNum.append(digitArray[counter + j]);
+      }
+      int num = Integer.parseInt(tempNum.toString());
+      if (num % primeList.get(i - 1) != 0) {
+        return false;
+      }
+      counter++;
+    }
+    return true;
+  }
 
   @SuppressWarnings("Duplicates")
-  private boolean isPandigital(int number) {
-    String numberString = Integer.toString(number);
+  private boolean isPandigital(long number) {
+    String numberString = Long.toString(number);
     char[] array = numberString.toCharArray();
     Arrays.sort(array);
     StringBuilder tempNumber = new StringBuilder("");
@@ -40,27 +64,6 @@ public class Task43 {
     return ((numberString.length() == 10) && numberString.equals("0123456789"));
   }
 
-
-  @SuppressWarnings("Duplicates")
-  private boolean isPrime(int number) {
-    if (number == 2) {
-      return true;
-    }
-    if (number == 1) {
-      return false;
-    }
-    if (number % 2 == 0) {
-      return false;
-    }
-    for (int i = 3; i * i <= number; i += 2) {
-      if (number % i == 0) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-
   private void permutation(String str) {
     permutation("", str);
   }
@@ -69,7 +72,7 @@ public class Task43 {
   private void permutation(String prefix, String str) {
     int textLength = str.length();
     if (textLength == 0) {
-      int number = Integer.parseInt(prefix);
+      long number = Long.parseLong(prefix);
       if (isPandigital(number)) {
         numberList.add(number);
       }
