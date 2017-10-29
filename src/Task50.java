@@ -15,33 +15,35 @@ import java.util.List;
 class Task50 {
 
   List<Integer> primes = new ArrayList<>();
+  int sum = 0;
+  int highestSumPrime = 0;
 
   int task50Solution() {
     fillPrimeList(1000000);
-    System.out.println(primeSum(953));
-//    return getHighestPrimeSum();
-return 1;
+    getHighestPrimeSum();
+    return highestSumPrime;
   }
 
-  private int getHighestPrimeSum() {
-    int maxValue = 0;
-    int prime = 0;
-    for (int i = 0; i < primes.size(); ++i) {
-      int temp = primeSum(primes.get(i));
-      if (temp > maxValue) {
-        maxValue = primeSum(primes.get(i));
-        prime = primes.get(i);
-      }
+  private void getHighestPrimeSum() {
+    for (int prime : primes) {
+      primeSum(prime);
     }
-    return prime;
   }
 
   private int primeSum(int prime) {
-    int sum = 0;
     for (int i = 0; i < primes.size(); i++) {
-      sum += primes.get(i);
-      if (sum == prime) {
-        return i + 1;
+      int tempSum = 0;
+      int counter = 1;
+      for (int j = i; j < primes.size(); j++) {
+        tempSum += primes.get(j);
+        if (tempSum > prime) {
+          break;
+        }
+        if (tempSum == prime && counter > sum) {
+          highestSumPrime = prime;
+          return sum = counter;
+        }
+        counter++;
       }
     }
     return -1;
