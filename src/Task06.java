@@ -1,23 +1,10 @@
+import java.util.stream.IntStream;
 
 public class Task06 {
 
   public int task06Solution() {
-    return squareOfTheSum() - sumOfTheSquare();
-  }
-
-  private int sumOfTheSquare() {
-    int sumOfTheSquare = 0;
-    for (int i = 1; i < 101; i++) {
-      sumOfTheSquare += i * i;
-    }
-    return sumOfTheSquare;
-  }
-
-  private int squareOfTheSum() {
-    int sum = 0;
-    for (int i = 1; i < 101; i++) {
-      sum += i;
-    }
-    return sum * sum;
+    double squareSum = IntStream.range(1, 101).mapToDouble(e -> Math.pow(e, 2)).sum();
+    double squareOfTheSum = Math.pow(IntStream.range(1, 101).sum(), 2);
+    return (int) (squareOfTheSum - squareSum);
   }
 }

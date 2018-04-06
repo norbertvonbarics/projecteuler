@@ -15,7 +15,6 @@ public class Task05 {
       }
     }
     Collections.sort(divides);
-    System.out.println(divides);
     return divides.get(0);
   }
 

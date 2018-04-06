@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Task04 {
 
+  //296 millis
   public int task04Solution() {
     int highestPalindrome = 0;
     for (int i = 100; i < 1000; i++) {
@@ -20,10 +22,8 @@ public class Task04 {
 
   private boolean isPalindrome(int number) {
     String numberAsString = Integer.toString(number);
-    String reversed = "";
-    for (int i = numberAsString.length(); i > 0; i--) {
-      reversed += numberAsString.charAt(i-1);
-    }
+    StringBuilder stringBuilder = new StringBuilder(numberAsString);
+    String reversed = stringBuilder.reverse().toString();
     return numberAsString.equals(reversed);
   }
 }
