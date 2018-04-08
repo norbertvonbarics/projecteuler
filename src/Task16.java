@@ -1,28 +1,15 @@
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 
 public class Task16 {
-  public BigInteger task16Solution(){
-    System.out.println(getBigInteger());
-    return sumDigits();
-  }
 
-  private BigInteger sumDigits(){
-    BigInteger number = getBigInteger();
-    BigInteger sum = BigInteger.ZERO;
-    BigInteger ten = new BigInteger("10");
-    while (number.compareTo(BigInteger.ZERO) > 0) {
-      sum = sum.add(number.mod(ten));
-      number = number.divide(ten);
-    }
-    return sum;
-  }
-
-  private BigInteger getBigInteger() {
-    BigInteger multiplier = new BigInteger("2");
+  //  1366
+  //  RUNTIME: 32 MILLIS
+  public long task16Solution(){
     BigInteger solution = new BigInteger("2");
     for (int i = 0; i < 999; i++) {
-      solution = solution.multiply(multiplier);
+      solution = solution.multiply(new BigInteger("2"));
     }
-    return solution;
+    return solution.toString().chars().mapToLong(Character::getNumericValue).sum();
   }
 }

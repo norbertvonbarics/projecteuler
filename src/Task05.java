@@ -4,21 +4,23 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Task05 {
 
+  //232792560
+  //  RUNTIME: 18954 MILLIS
   public int task05Solution() {
-    List<Integer> divides = new ArrayList<>();
-    for (int i = 1; i < 2000000000; i++) {
+    for (int i = 1; ; i++) {
       if (isDividable(i)) {
-        divides.add(i);
+        return i;
       }
     }
-    Collections.sort(divides);
-    return divides.get(0);
   }
 
   private boolean isDividable(int number) {
+//   return  IntStream.range(1,21).filter(e-> number % e == 0).count() == 20;
     int counter = 0;
     for (int i = 1; i < 21; i++) {
       if (number % i == 0) {

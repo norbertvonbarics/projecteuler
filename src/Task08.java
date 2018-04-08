@@ -1,15 +1,10 @@
-import java.text.CollationElementIterator;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 public class Task08 {
-
+  //  23514624000
+  //  RUNTIME: 16 MILLIS
   public long task08Solution() {
     long largestSum = 1;
     for (int i = 0; i < getMatrix().length() - 13; ++i) {
-      long tempSum = getTempSum(i);
+      long tempSum = getProduct(i);
       if (tempSum > largestSum) {
         largestSum = tempSum;
       }
@@ -17,17 +12,14 @@ public class Task08 {
     return largestSum;
   }
 
-  private long getTempSum(int i) {
+  private long getProduct(int i) {
+    String sub = getMatrix().substring(i, i + 13);
     long number = 1;
-    for (int j = 0; j < thirteenSubstring(i).length(); j++) {
-      char tempChar = thirteenSubstring(i).charAt(j);
+    for (int j = 0; j < 13; j++) {
+      char tempChar = sub.charAt(j);
       number *= Character.getNumericValue(tempChar);
     }
     return number;
-  }
-
-  private String thirteenSubstring(int startIndex) {
-    return getMatrix().substring(startIndex, startIndex + 13);
   }
 
   private String getMatrix() {

@@ -1,23 +1,20 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Task07 {
 
-  public int task07Solution(){
-    List<Integer> primes = new ArrayList<>();
-    for (int i = 2; i < 150000; i++) {
-      if(isPrime(i)) {
-        primes.add(i);
-      }
-    }
-    return primes.get(10000);
-  }
 
-  boolean isPrime(int n) {
-    for(int i=2;i<n;i++) {
-      if(n%i==0)
-        return false;
-    }
-    return true;
+
+  //  104743
+  //  RUNTIME: 5116 MILLIS
+  public int task07Solution(){
+    return IntStream.range(1, 150000)
+        .filter(e -> new BigInteger(Integer.toString(e)).isProbablePrime(100))
+        .boxed()
+        .collect(Collectors.toList())
+        .get(10000);
   }
 }
