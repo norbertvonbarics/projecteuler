@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//    21124
+//    RUNTIME: 23518 MILLIS
 public class Task17 {
   List<String> numberList = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five",
       "six", "seven", "eight", "nine"));
@@ -22,11 +24,6 @@ public class Task17 {
     numbers.addAll(numberList);
     numbers.addAll(numberListBetweenTenAndTwenty);
     numbers.addAll(getOneHundred());
-
-    for (int j = 0; j < 8; j++) {
-
-    }
-
     return numbers;
   }
 

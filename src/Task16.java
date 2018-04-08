@@ -1,5 +1,4 @@
 import java.math.BigInteger;
-import java.util.stream.IntStream;
 
 public class Task16 {
 
